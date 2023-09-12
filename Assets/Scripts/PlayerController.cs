@@ -11,6 +11,9 @@ public class GameplayController : MonoBehaviour
     public Slider leftSliderControl;
     public Slider rightSliderControl;
 
+    public ParticleSystem rightParticles;
+    public ParticleSystem leftParticles;
+
     private float leftEngineThrust = 0;
     private float rightEngineThrust = 0;
     private float thrustValue = 5;
@@ -43,7 +46,7 @@ public class GameplayController : MonoBehaviour
             rightEngineThrust -= thrustValue * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.T))
+        if (Input.GetKey(KeyCode.R))
         {
             leftEngineThrust = 0;
             rightEngineThrust = 0;
@@ -57,6 +60,9 @@ public class GameplayController : MonoBehaviour
 
         leftRigidbody.velocity = leftRigidbody.transform.up * leftEngineThrust;
         rightRigidbody.velocity = rightRigidbody.transform.up * rightEngineThrust;
+
+        rightParticles.startSpeed = rightEngineThrust * 2;
+        leftParticles.startSpeed = leftEngineThrust * 2;
 
         ui.leftEngineValue.text = leftEngineThrust.ToString();
         ui.rightEngineValue.text = rightEngineThrust.ToString();
