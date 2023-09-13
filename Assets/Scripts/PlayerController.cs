@@ -60,9 +60,12 @@ public class GameplayController : MonoBehaviour
 
         leftRigidbody.velocity = leftRigidbody.transform.up * leftEngineThrust;
         rightRigidbody.velocity = rightRigidbody.transform.up * rightEngineThrust;
-
+        
         rightParticles.startSpeed = rightEngineThrust * 2;
         leftParticles.startSpeed = leftEngineThrust * 2;
+
+        leftSliderControl.value = leftEngineThrust;
+        rightSliderControl.value = rightEngineThrust;
 
         ui.leftEngineValue.text = leftEngineThrust.ToString();
         ui.rightEngineValue.text = rightEngineThrust.ToString();
